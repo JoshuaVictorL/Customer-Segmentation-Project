@@ -1,0 +1,11 @@
+COLUMNS:
+  User_ID: int64 
+  Product_ID: object
+  Gender: object
+  Age: object
+  Occupation: int64 
+  City_Category: object
+  Stay_In_Current_City_Years: object
+  Marital_Status: int64 
+  Product_Category: int64 
+  Purchase: int64 
