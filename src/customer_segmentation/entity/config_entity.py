@@ -22,3 +22,15 @@ class DataValidationConfig:
 class DataTransformationConfig:
     root_dir: Path
     data_path: Path
+
+
+@dataclass(frozen=True)
+class ModelTrainerConfig:
+    root_dir: Path
+    transformed_data_path: Path
+    clustered_data_path: Path
+    model_save_path: Path
+    test_size: float
+    random_state: int
+    n_estimators: int
+    max_depth: int

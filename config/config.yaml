@@ -17,3 +17,10 @@ data_validation:
 data_transformation:
   root_dir: artifacts/data_transformation
   data_path: artifacts/data_ingestion/walmart.csv
+
+
+model_trainer:
+  root_dir: artifacts/model_trainer
+  transformed_data_path: artifacts/data_transformation/transformed_scaled_data.csv
+  clustered_data_path: artifacts/model_trainer/clustered_data.csv
+  model_save_path: artifacts/model_trainer/final_model.pkl
