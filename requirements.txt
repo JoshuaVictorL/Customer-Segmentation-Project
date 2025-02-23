@@ -12,4 +12,7 @@ ensure==1.0.2
 joblib
 types-PyYAML
 fastapi
+uvicorn
+pydantic
+python-multipart
 -e .
