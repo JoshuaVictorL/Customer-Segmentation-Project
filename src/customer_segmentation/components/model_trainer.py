@@ -29,6 +29,11 @@ class ModelTrainer:
             X, y, test_size=self.config.test_size, random_state=self.config.random_state
         )
 
+        # Save the test dataset for evaluation
+        test_data = X_test.copy()
+        test_data['Cluster'] = y_test
+        test_data.to_csv(self.config.test_data_path, index=False)
+
         rf = RandomForestClassifier(
             n_estimators=self.config.n_estimators,
             max_depth=self.config.max_depth,

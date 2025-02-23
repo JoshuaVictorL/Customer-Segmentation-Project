@@ -3,3 +3,6 @@ model_trainer:
   random_state: 42
   n_estimators: 100
   max_depth: 10
+
+model_evaluation:
+  metric_average: "weighted"
