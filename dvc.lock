@@ -1,0 +1,112 @@
+schema: '2.0'
+stages:
+  data_ingestion:
+    cmd: python src/customer_segmentation/pipeline/stage_01_data_ingestion.py
+    deps:
+    - path: config/config.yaml
+      hash: md5
+      md5: 1a93f0f2430b4f33b9324a750fc9408c
+      size: 1202
+    - path: src/customer_segmentation/pipeline/stage_01_data_ingestion.py
+      hash: md5
+      md5: 3cc2695dd7cc191605049a43e956167c
+      size: 906
+    outs:
+    - path: artifacts/data_ingestion/
+      hash: md5
+      md5: 4e74b8df4790b0bfc2ff1cf5f94a0da1.dir
+      size: 28064613
+      nfiles: 2
+  data_validation:
+    cmd: python src/customer_segmentation/pipeline/stage_02_data_validation.py
+    deps:
+    - path: artifacts/data_ingestion/
+      hash: md5
+      md5: 4e74b8df4790b0bfc2ff1cf5f94a0da1.dir
+      size: 28064613
+      nfiles: 2
+    - path: config/config.yaml
+      hash: md5
+      md5: 1a93f0f2430b4f33b9324a750fc9408c
+      size: 1202
+    - path: src/customer_segmentation/pipeline/stage_02_data_validation.py
+      hash: md5
+      md5: f761f08b7149b10bafd81942f1b84687
+      size: 884
+    outs:
+    - path: artifacts/data_validation/
+      hash: md5
+      md5: 0ccb3ea5849272ff03be5ab71786b9ff.dir
+      size: 23
+      nfiles: 1
+  data_transformation:
+    cmd: python src/customer_segmentation/pipeline/stage_03_data_transformation.py
+    deps:
+    - path: artifacts/data_validation/
+      hash: md5
+      md5: 0ccb3ea5849272ff03be5ab71786b9ff.dir
+      size: 23
+      nfiles: 1
+    - path: config/config.yaml
+      hash: md5
+      md5: 1a93f0f2430b4f33b9324a750fc9408c
+      size: 1202
+    - path: src/customer_segmentation/pipeline/stage_03_data_transformation.py
+      hash: md5
+      md5: 4ab49bb118f358be11efcb9a43ecdd5f
+      size: 1295
+    outs:
+    - path: artifacts/data_transformation/
+      hash: md5
+      md5: f5aab6b3e2fb414373f88e13892a303b.dir
+      size: 1778103
+      nfiles: 1
+  model_trainer:
+    cmd: python src/customer_segmentation/pipeline/stage_04_model_trainer.py
+    deps:
+    - path: artifacts/data_transformation/
+      hash: md5
+      md5: f5aab6b3e2fb414373f88e13892a303b.dir
+      size: 1778103
+      nfiles: 1
+    - path: params.yaml
+      hash: md5
+      md5: 399afdd292cf58ed68ac71e7501d865c
+      size: 134
+    - path: src/customer_segmentation/pipeline/stage_04_model_trainer.py
+      hash: md5
+      md5: ad072f99c0d1c39ca1e3447b92398031
+      size: 845
+    outs:
+    - path: artifacts/model_trainer/
+      hash: md5
+      md5: cb0f273cdc5e82d9f38edcf58c29b438.dir
+      size: 3248889
+      nfiles: 3
+  model_evaluation:
+    cmd: python src/customer_segmentation/pipeline/stage_05_model_evaluation.py
+    deps:
+    - path: artifacts/data_transformation/
+      hash: md5
+      md5: f5aab6b3e2fb414373f88e13892a303b.dir
+      size: 1778103
+      nfiles: 1
+    - path: artifacts/model_trainer/
+      hash: md5
+      md5: cb0f273cdc5e82d9f38edcf58c29b438.dir
+      size: 3248889
+      nfiles: 3
+    - path: config/config.yaml
+      hash: md5
+      md5: 1a93f0f2430b4f33b9324a750fc9408c
+      size: 1202
+    - path: src/customer_segmentation/pipeline/stage_05_model_evaluation.py
+      hash: md5
+      md5: 96e277941aa4c10b899097af27a3139a
+      size: 900
+    outs:
+    - path: artifacts/model_evaluation/
+      hash: md5
+      md5: 1edc9c64ceba2fa8e6b0a8f86be00bd0.dir
+      size: 144
+      nfiles: 1

@@ -11,6 +11,7 @@
 7. Update the pipeline 
 8. Update the main.py
 9. Update the app.py
+10. Update the dvc.yaml
 
 
 
@@ -48,6 +49,12 @@ Now,
 ```bash
 open up you local host and port
 ```
+
+## DVC
+
+1. dvc init
+2. dvc repro
+3. dvc dag
 
 
 
