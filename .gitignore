@@ -176,3 +176,5 @@ research/done.ipynb
 research/final_new.ipynb
 research/final.ipynb
 research/thatsit.ipynb
+
+.dvcignore
